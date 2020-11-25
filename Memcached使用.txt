@@ -1,0 +1,58 @@
+Memcached使用：
+
+1、搭建好LNMP环境
+
+2、安装依赖包
+  yum install -y libevent-devel
+
+3、安装 memcached
+  tar -zxvf memcached-1.4.33.tar.gz
+  cd memcached-1.4.33
+  ./configure --prefix=/usr/local/memcached --enable-64bit
+  make && make install
+
+  开启服务：
+     cd /usr/local/memcached/bin
+     ./memcached -u www -d
+     -p:指定端口,默认为11211
+     -m: 指定内存,根据自己硬件配置
+     -u: 指定用户,不能是root
+     -d: 后台运行
+
+
+4、安装 libmemcached
+tar -zxvf  libmemcached-1.0.18.tar.gz
+cd libmemcached-1.0.18
+./configure --prefix=/usr/local/libmemcached --with-memcached
+make && make install
+
+
+5、安装php-memcached-php7
+   phpize
+   ./configure --with-php-config=/usr/local/php7/bin/php-config
+   --with-libmemcached-dir=/usr/local/libmemcached/
+   make && make install
+   将上步得到的路径添加到PHP配置文件：
+   /usr/local/php7/etc/php.ini
+   extension="/usr/local/php7/lib/php/extensions/no-debug-non-zts-20151012/memcached.so"
+   重启php: service php-fpm restart
+
+
+6、使用 memcached
+    创建新对象: new Memcached
+    添加服务器: addServer
+    添加键值对: set
+    根据键获取值: get
+    删除键值对: delete
+    添加指定数值： increment
+    减去指定数值： decrement
+    清空所有缓存: flush
+
+7、设置session使用memcached保存
+   vi /usr/local/php7/etc/php.ini
+   session.save_handler= memcached
+   session.save_path="127.0.0.1:11211"
+
+
+
+

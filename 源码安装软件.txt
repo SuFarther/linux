@@ -1,0 +1,38 @@
+源码安装软件:
+
+配置: configure
+编译: make
+安装: make install
+
+
+实例演示: 源码安装Apache:
+   1、 下载C编译器,用来编译C语言编写的源代码
+       yum install -y gcc
+   2、 下载Apache源码
+      curl -o http://apache.fayea.com/httpd/httpd-2.2.32.tar.gz
+   3、解压下载的压缩包
+      tar -zxvf httpd-2.2.32.tar.gz
+   4、进入解压后的文件夹
+     cd httpd-2.2.32
+   5、编译前的配置
+       ./configure --prefix=/usr/local/apache2
+       配置选项:
+          -h/--help: 查看帮助
+          --prefix: 指定安装目录
+   6、编译源码
+     make   或者make && make install
+   7、安装
+     make install
+   8、控制Apache软件
+     控制命令: PREFIX/bin/apachect1
+     控制操作: start|stop|restart  启动｜关闭｜重启
+   9、配置文件: PREFIX/conf/httpd.conf
+     去掉前面#,将域名改为虚拟机IP,如下：
+     ServerName IP:80
+   10、设置防火墙
+     service iptables status 查看防火墙状态
+     service iptables start|stop 开启｜关闭
+
+
+
+

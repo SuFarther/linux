@@ -1,0 +1,30 @@
+文件压缩解压
+
+gzip:
+   作用: 压缩文件,只能是单个文件,不能是多个,也不能是目录
+   格式: gzip file
+   说明: 执行命令会生成file.gz,删除原来的file
+   选项: -d等价于gunzip
+gunzip:
+   作用: 解压使用gzip压缩生成的文件
+   格式: gunzip file.gz
+   说明: 解压file.gz文件,生成file,删除原来的file.gz
+
+bzip2/bunzip2:
+  说明:
+    1、用法与gzip/gunzip相同,只是多了'-k'参数,压缩或解压后保留原文件
+    2、使用bzip2压缩的文件后缀为bz2,而使用gzip压缩的文件后缀为gz
+  选项:
+    -c: 压缩
+    -x: 解压
+    -z: 使用gzip
+    -j: 使用bzip2
+    -f: 指定处理文件
+    -y: 显示(压缩解压过程的详细信息)
+    -C: 指定解压之后存放文件的目录
+
+  实例
+  tar -zcvf 123 tar.gz 1 2 3
+  使用gzip将 1 2 3 压缩123.tar.gz
+  tar -zxvf 123 tar.gz [-C /tmp]
+  使用gzip将123.tar.gz解压[至/tmp目录]

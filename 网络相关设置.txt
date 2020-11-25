@@ -1,0 +1,30 @@
+网络相关设置:
+
+
+ping:
+   作用: 通常用于检测网络设备的连通性
+   格式: ping IP/域名
+   选项: -c,指定方式测试数据包的次数
+
+
+ifconfig:
+   作用: 查看或设置网卡信息
+   实例;
+     ifconfig: 查看活动网卡信息
+     ifconfig eth0 down: 关闭网卡,等价于ifdown eth0
+     ifconfig etho0 up: 开启网卡,等于于ifup eth0
+
+   服务:
+    /etc/init.d/network start |stop|restart 开启｜发芽吧v｜重启 网络服务
+    service network start|stop|restart 开启｜关闭｜重启｜网络服务
+
+
+网络配置文件:
+   /etc/sysconfig/network-scripts/ifcfg-eth0
+   DEVICE=eh0
+   HWADDR=00:1C:42:51:74:18DDR=
+   TYPE=Ethernet
+   UUID=b3de21de-5cc9-472d-ac0d-3e8198988ddd
+   ONBOOT=yes
+   NM_OCNTROLLED=yes
+   BOOTRROTO=dbcp

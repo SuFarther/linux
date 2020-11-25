@@ -1,0 +1,40 @@
+系统启动后需要输入用户名和密码
+   用户名： root
+   密码: 之前安装过程设置的密码
+
+1、切换到/etc/sysconfig/network-script目录bak
+  cd /etc/sysconfig/network-script
+2、将ifcfg-eth0被分成ifcfg-eth0.
+  cp ifcfg-eth0 ifcfg-eth0.bak
+3、修改配置文件(ifcfg-eth0)
+   修改内容: ONBOOT=yes
+   添加内容: DNS1 = 8.8.8.8
+4、操作网卡（启动/停止/重启）
+   启动: /etc/init.d/network start
+   停止: /etc/init.d/network stop
+   重启: /etc/init.d/network restart
+5、使用工具连接虚拟机
+   推荐: putty,轻量,免费,方便(无需安装)
+6、开关机命令
+   重启: shutdown -r now 或 reboot
+   关机： shutdown -h now 或 poweroff或 halt
+7、最常用命令及操作
+   ifconfig: 查看或配置网卡信息(包括IP)
+   cd: change directory,切换工作目录
+   ls: list,列表显示当前目录的内容
+   pwd: print work directory,打印工作目录
+
+   tab: 自动补全（命令/参数）
+   clear: 清空屏幕(Ctrl+L)
+   history: 显示历史命令
+   上/下： 翻看历史命令
+   ping ip/域名： 网络检测
+   Ctrl + c:结束进程
+
+ 8、VI基本操作
+    打开文件: vi 文件名
+    开始编辑： a或者i
+    退出编辑: Esc
+    保存退出: shift+zz
+
+
